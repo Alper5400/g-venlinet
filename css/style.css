@@ -150,13 +150,12 @@ footer {
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Ortalamak yerine sola yasla */
+    padding-left: 20px;      /* Hafif sola kaydır */
   }
 
   nav ul {
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .card {
@@ -373,5 +372,5 @@ footer {
 .logo-img {
   height: 30px;
   object-fit: contain;
-  margin-left: 10; /* varsa azalt */
+  margin-left: 0; /* varsa azalt */
 }
