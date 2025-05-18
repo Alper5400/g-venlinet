@@ -155,6 +155,7 @@ footer {
   }
 
   nav ul {
+    flex-direction: column;
     align-items: flex-start;
   }
 
@@ -370,7 +371,5 @@ footer {
 }
 
 .logo-img {
-  height: 30px;
-  object-fit: contain;
   margin-left: 0; /* varsa azalt */
 }
