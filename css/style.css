@@ -373,4 +373,5 @@ footer {
 .logo-img {
   height: 30px;
   object-fit: contain;
+  margin-left: 0; /* varsa azalt */
 }
