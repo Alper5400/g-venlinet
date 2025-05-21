@@ -58,7 +58,8 @@
       <li><strong>airmon-ng</strong> – ➤ Kablosuz kartı izleme moduna alır.  
         <br><code>airmon-ng start wlan0</code></li>
       <li><strong>airodump-ng</strong> – ➤ Çevredeki ağları ve bağlı cihazları analiz eder.  
-        <br><code>airodump-ng wlan0mon</code></li>
+        <br><code>airodump-ng wlan0mon
+        airodump-ng --channel 8 --bssid ******* --write airodumptest wlan0mon</code></li>
       <li><strong>aireplay-ng</strong> – ➤ Hedeften istemci düşürme (deauth attack) yapar.  
         <br><code>aireplay-ng -0 10 -a [BSSID] wlan0mon</code></li>
       <li><strong>aircrack-ng</strong> – ➤ Elde edilen handshake’i kullanarak WPA şifresi kırar.  
